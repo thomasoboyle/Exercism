@@ -1,4 +1,5 @@
 class Hamming
+  VERSION = 1
 	def self.compute(value_1, value_2)
     count = 0
     Range.new(0, value_1.length-1).to_a.each do |index|
