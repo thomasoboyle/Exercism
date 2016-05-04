@@ -14,4 +14,3 @@ class Hamming
     count
 	end
 end
-
