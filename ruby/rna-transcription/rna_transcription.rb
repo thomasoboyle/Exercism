@@ -10,8 +10,6 @@ class Complement
       'A'
     when 'A'
       'U'
-
     end
-
   end
 end
