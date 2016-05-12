@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
 gem 'minitest', '>= 5.0.0'
 require 'minitest/autorun'
+require 'minitest/pride'
 require_relative 'raindrops'
 
 # Test data version:
@@ -12,7 +13,6 @@ class RaindropsTest < Minitest::Test
   end
 
   def test_3
-    skip
     assert_equal 'Pling', Raindrops.convert(3)
   end
 
