@@ -13,6 +13,7 @@ class Complement
         complement.push('A')
       elsif letter == 'A'
         complement.push('U')
+      else raise ArgumentError.new("Invalid")
       end
     end
 
