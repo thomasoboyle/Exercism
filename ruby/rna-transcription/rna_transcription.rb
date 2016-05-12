@@ -16,7 +16,11 @@ class Complement
       end
     end
 
-puts complement.class
-    complement.to_s
+    my_return_str = ""
+    complement.each do |i|
+      my_return_str += i.to_s
+    end
+
+    my_return_str
   end
 end
