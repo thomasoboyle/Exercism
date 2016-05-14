@@ -2,6 +2,9 @@ class Raindrops
   def self.convert(number)
     if number == 1
       number = "#{number}"
+    # elsif (number / 7) % 5 == 0
+    #   number = "PlangPlong"
+    # getting code smells... this does seem sustainable
     elsif (number / 3) % 5 == 0
       number = "PlingPlang"
     elsif (number / 3) % 7 == 0
