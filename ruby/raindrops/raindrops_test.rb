@@ -45,7 +45,6 @@ class RaindropsTest < Minitest::Test
   end
 
   def test_21
-    skip
     assert_equal 'PlingPlong', Raindrops.convert(21)
   end
 
@@ -54,22 +53,18 @@ class RaindropsTest < Minitest::Test
   end
 
   def test_35
-    skip
     assert_equal 'PlangPlong', Raindrops.convert(35)
   end
 
   def test_49
-    skip
     assert_equal 'Plong', Raindrops.convert(49)
   end
 
   def test_52
-    skip
     assert_equal '52', Raindrops.convert(52)
   end
 
   def test_105
-    skip
     assert_equal 'PlingPlangPlong', Raindrops.convert(105)
   end
 
@@ -82,7 +77,6 @@ class RaindropsTest < Minitest::Test
   # If you are curious, read more about constants on RubyDoc:
   # http://ruby-doc.org/docs/ruby-doc-bundle/UsersGuide/rg/constants.html
   def test_bookkeeping
-    skip
     assert_equal 1, Raindrops::VERSION
   end
 end

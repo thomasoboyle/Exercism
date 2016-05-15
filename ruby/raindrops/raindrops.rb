@@ -1,15 +1,15 @@
 class Raindrops
+    VERSION = 1
+  
   def self.convert(number)
-    sounds = []
-    if number == 1
-      sounds.push("#{number}")
-    elsif number % 3 == 0
-      sounds.push("Pling")
-    elsif number % 5 == 0
-      sounds.push("Plang")
-    elsif number % 7 == 0
-      sounds.push("Plong")
-    end
-    sounds*""
+    sounds = ""
+    
+    sounds << "Pling" if number % 3 == 0
+    sounds << "Plang" if number % 5 == 0
+    sounds << "Plong" if number % 7 == 0
+
+    sounds = number.to_s if sounds.empty?
+    sounds
   end
+  
 end
