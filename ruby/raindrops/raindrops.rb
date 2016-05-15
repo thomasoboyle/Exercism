@@ -1,20 +1,15 @@
 class Raindrops
   def self.convert(number)
+    sounds = []
     if number == 1
-      number = "#{number}"
-    # elsif (number / 7) % 5 == 0
-    #   number = "PlangPlong"
-    # getting code smells... this does seem sustainable
-    elsif (number / 3) % 5 == 0
-      number = "PlingPlang"
-    elsif (number / 3) % 7 == 0
-      number = "PlingPlong"
+      sounds.push("#{number}")
     elsif number % 3 == 0
-      number = "Pling"
+      sounds.push("Pling")
     elsif number % 5 == 0
-      number = "Plang"
+      sounds.push("Plang")
     elsif number % 7 == 0
-      number = "Plong"
+      sounds.push("Plong")
     end
+    sounds*""
   end
 end
