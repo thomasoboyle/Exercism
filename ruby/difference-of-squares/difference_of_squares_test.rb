@@ -13,7 +13,6 @@ class DifferenceOfSquaresTest < Minitest::Test
   end
 
   def test_square_of_sum_10
-    skip
     assert_equal 3_025, Squares.new(10).square_of_sum
   end
 
