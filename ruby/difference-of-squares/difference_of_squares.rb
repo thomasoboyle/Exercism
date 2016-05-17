@@ -8,12 +8,8 @@ class Squares
   end
 
   def sum_of_squares()
-    array = (1..@number).to_a
-
-    sqr = 0
-    array.each do |i|
-      sqr += i **2
-    end
-    sqr
+    sum = (1..@number).to_a.reduce(0) {|acc, elm| 
+      acc += elm ** 2
+    }
   end
 end
