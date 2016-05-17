@@ -10,11 +10,10 @@ class Squares
   def sum_of_squares()
     array = (1..@number).to_a
 
-    sqr = []
+    sqr = 0
     array.each do |i|
-      sqr.push(i **2)
+      sqr += i **2
     end
-
-    sqr.reduce(:+)
+    sqr
   end
 end
