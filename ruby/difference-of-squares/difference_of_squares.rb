@@ -8,6 +8,13 @@ class Squares
   end
 
   def sum_of_squares()
-    55
+    array = (1..@number).to_a
+
+    sqr = []
+    array.each do |i|
+      sqr.push(i **2)
+    end
+
+    sqr.reduce(:+)
   end
 end
