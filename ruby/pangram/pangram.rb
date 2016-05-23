@@ -1,9 +1,11 @@
 class Pangram
   def self.is_pangram?(str)
-    if str.include? ""
+    alph = ("a".."z").to_a
+
+    if str.include?("")
       is_pangram = true
     
-    elsif str.include?("a".."z".to_a)
+    elsif str.include?(alph)
       is_pangram = true
     end
   end
