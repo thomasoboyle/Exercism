@@ -1,7 +1,7 @@
 class Squares
   VERSION = 2
   attr_reader :number
-  
+
   def initialize(number)
     @number = number
   end
