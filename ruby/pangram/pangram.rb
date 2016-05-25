@@ -5,7 +5,7 @@ class Pangram
     if str.include?("")
       is_pangram = true
     
-    elsif alph.length {|i| string.include? i
+    elsif alph.any? {|i| aplh.include? i
       is_pangram = true}
     end
   end
