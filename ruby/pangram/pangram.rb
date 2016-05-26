@@ -1,12 +1,13 @@
 class Pangram
   def self.is_pangram?(str)
-    alph = ("a".."z").to_a
+    
+    ("a".."z").do each |l|
+      if line.index(l).nil?
+        #store in string
+   
 
     if str.include?("")
       is_pangram = true
-    
-    elsif alph.any? {|i| aplh.include? i
-      is_pangram = true}
     end
   end
 end
