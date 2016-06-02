@@ -1,6 +1,6 @@
 class Pangram
   def self.is_pangram?(str)
-    input = str.chars
+    input = str.downcase.chars
     pan = ("a".."z").to_a
     missing_letters = pan.map do |letter|
       unless input.include?(letter)
