@@ -1,13 +1,12 @@
 class Pangram
   VERSION = 1
-  def self.is_pangram?(str)
-    input = str.downcase.chars
-    pan = ("a".."z").to_a
-    missing_letters = pan.map do |letter|
+  def self.is_pangram?(string)
+    input = string.downcase
+    pangram = ("a".."z")
+    pangram.map { |letter|
       unless input.include?(letter)
         letter
       end
-    end.compact
-    is_pangram = missing_letters.empty?
+    }.compact.empty?
   end
 end
