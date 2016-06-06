@@ -3,7 +3,7 @@ class Pangram
 
   def self.is_pangram?(string)
     input = string.downcase
-    ("a".."z").select { |letter| input.reject letter }.empty?
+    ("a".."z").select { |letter| !input.include? letter }.empty?
   end
   
 end
