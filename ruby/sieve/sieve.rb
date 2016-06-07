@@ -1,15 +1,20 @@
 class Sieve
-  def initialize(number)
+  def initialize(picked_number)
+    @picked_number = picked_number
   end
 
-primes_array = []
-not_primes = []
 
-  def primes(2..number) each do |n| n+1
-    if new_num.prime = true
-      primes_array.push(new_num)
-    else
-      not_primes.push(new_num)
-    end
+  def primes()
+    (2..@picked_number).map {|number|
+      (number..@picked_number).each do |n|
+      if number < @picked_number
+        new_number = number * n
+      else
+        number = [number]
+        return number
+      end
+      return new_number
+     end
+    }
   end
 end
