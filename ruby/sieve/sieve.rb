@@ -10,9 +10,10 @@ class Sieve
       (number..@picked_number).each do |n|
         new_number = number * n
         
-        if new_number < picked number
+        if new_number < @picked_number
           array.push(new_number)
         end
+      end
 
         # Ensure that each new number is less than picked number
         # store each number in a new array
@@ -25,6 +26,6 @@ class Sieve
       #   new_number = [number]
       # end
       # return new_number
+      }
     end
-  }
 end
