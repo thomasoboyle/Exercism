@@ -5,27 +5,23 @@ class Sieve
 
 
   def primes()
-    array = []
-    (2..@picked_number).map {|number|
+    not_primes = []
+    range = (2..@picked_number).to_a
+    range.map {|number|
+      # go from 2 to 3
       (number..@picked_number).each do |n|
         new_number = number * n
-        
-        if new_number < @picked_number
-          array.push(new_number)
+        # this multiples the number
+        if new_number < @picked_number + 1
+          not_primes.push(new_number)
+          # not prime numbers in array
         end
       end
 
         # Ensure that each new number is less than picked number
         # store each number in a new array
         # then chech if each item is prime. Return primes.
-        # 
-
-      # if number < @picked_number
-      #   new_number = number * n
-      # else
-      #   new_number = [number]
-      # end
-      # return new_number
       }
+      primes = range - not_primes
     end
 end
