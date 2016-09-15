@@ -1,16 +1,14 @@
 
  class Fixnum
   def number(input)
-    @input
+    @input = input
   end
 
   def to_roman
-    if @input == "1"
-      "I"
-    elsif @input == "2"
-      "II"
-    else
-      print "Fart"
+    if @input == 1
+      print "I"
+    elsif @input == 2
+      print "II"
     end
   end
 end
