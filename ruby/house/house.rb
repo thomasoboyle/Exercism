@@ -1,33 +1,54 @@
 class House
-  def self.recite
-"This is the house that Jack built.
 
-This is the malt
+DATA = [
+    'the horse and the hound and the horn that belonged to',
+    'the farmer sowing his corn that kept',
+    'the rooster that crowed in the morn that woke',
+    'the priest all shaven and shorn that married',
+    'the man all tattered and torn that kissed',
+    'the maiden all forlorn that milked',
+    'the cow with the crumpled horn that tossed',
+    'the dog that worried',
+    'the cat that killed',
+    'the rat that ate',
+    'the malt that lay in',
+    'the house that Jack built',
+  ]
+
+def line
+  "This is the"
+end
+
+def self.recite
+
+"#{line} house that Jack built.
+
+#{line} malt
 that lay in the house that Jack built.
 
-This is the rat
+#{line} rat
 that ate the malt
 that lay in the house that Jack built.
 
-This is the cat
+#{line} cat
 that killed the rat
 that ate the malt
 that lay in the house that Jack built.
 
-This is the dog
+#{line} dog
 that worried the cat
 that killed the rat
 that ate the malt
 that lay in the house that Jack built.
 
-This is the cow with the crumpled horn
+#{line} cow with the crumpled horn
 that tossed the dog
 that worried the cat
 that killed the rat
 that ate the malt
 that lay in the house that Jack built.
 
-This is the maiden all forlorn
+#{line} maiden all forlorn
 that milked the cow with the crumpled horn
 that tossed the dog
 that worried the cat
@@ -35,7 +56,7 @@ that killed the rat
 that ate the malt
 that lay in the house that Jack built.
 
-This is the man all tattered and torn
+#{line} man all tattered and torn
 that kissed the maiden all forlorn
 that milked the cow with the crumpled horn
 that tossed the dog
@@ -44,7 +65,7 @@ that killed the rat
 that ate the malt
 that lay in the house that Jack built.
 
-This is the priest all shaven and shorn
+#{line} priest all shaven and shorn
 that married the man all tattered and torn
 that kissed the maiden all forlorn
 that milked the cow with the crumpled horn
@@ -54,7 +75,7 @@ that killed the rat
 that ate the malt
 that lay in the house that Jack built.
 
-This is the rooster that crowed in the morn
+#{line} rooster that crowed in the morn
 that woke the priest all shaven and shorn
 that married the man all tattered and torn
 that kissed the maiden all forlorn
@@ -65,7 +86,7 @@ that killed the rat
 that ate the malt
 that lay in the house that Jack built.
 
-This is the farmer sowing his corn
+#{line} farmer sowing his corn
 that kept the rooster that crowed in the morn
 that woke the priest all shaven and shorn
 that married the man all tattered and torn
@@ -77,7 +98,7 @@ that killed the rat
 that ate the malt
 that lay in the house that Jack built.
 
-This is the horse and the hound and the horn
+#{line} horse and the hound and the horn
 that belonged to the farmer sowing his corn
 that kept the rooster that crowed in the morn
 that woke the priest all shaven and shorn
@@ -91,3 +112,4 @@ that ate the malt
 that lay in the house that Jack built.\n"
   end
 end
+
