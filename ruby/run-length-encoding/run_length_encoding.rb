@@ -5,6 +5,10 @@ class RunLengthEncoding
     input_array.each do |value|
       input_hash[value] += 1
     end
-    input_hash
+    output = input_hash.map do |key, value|
+      value == 1 ? value = "" : value = value
+    "#{value}#{key}"
+    end
+    output.join("")
   end
 end

@@ -5,7 +5,6 @@ require_relative 'run_length_encoding'
 # Common test data version: 1.0.0 503a57a
 class RunLengthEncodingTest < Minitest::Test
   def test_encode_empty_string
-    # skip
     input = ''
     output = ''
     assert_equal output, RunLengthEncoding.encode(input)
@@ -24,7 +23,6 @@ class RunLengthEncodingTest < Minitest::Test
   end
 
   def test_encode_single_characters_mixed_with_repeated_characters
-    skip
     input = 'WWWWWWWWWWWWBWWWWWWWWWWWWBBBWWWWWWWWWWWWWWWWWWWWWWWWB'
     output = '12WB12W3B24WB'
     assert_equal output, RunLengthEncoding.encode(input)
