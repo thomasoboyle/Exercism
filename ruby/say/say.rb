@@ -1,5 +1,7 @@
 class Say
 
+  require 'pry'
+
   NUMBERS_UP_TO_ONE_HUNDRED = {
     100 => "hundred",
     90  => "ninety",
@@ -35,7 +37,7 @@ class Say
     1   => "one",
     0   => "zero",
   } 
-  require 'pry'
+
   def initialize(question)
     @question = question
   end
@@ -50,6 +52,7 @@ class Say
       if @question % 100 != 0
         remainder = @question % 100
         # get recursive with remainder
+        numbers_less_then_100(remainder)
       else
         NUMBERS_UP_TO_TWENTY[hunders_column] + " " + NUMBERS_UP_TO_ONE_HUNDRED[100]
       end
@@ -58,23 +61,26 @@ class Say
   
   private
 
-  def numbers_less_then_100
-    if digit_in_ones_column
+  def numbers_less_then_100(number = @question)
+    if digit_in_ones_column(number)
       NUMBERS_UP_TO_ONE_HUNDRED[tens_column] + "-" + NUMBERS_UP_TO_TWENTY[ones_column]
     else
       NUMBERS_UP_TO_ONE_HUNDRED[@question]
     end
   end
 
-  def digit_in_ones_column 
-    @question / 10 !=0
+  def digit_in_ones_column(number = @question) 
+    number / 10 !=0
   end
 
-  def ones_column
-    ones_column = @question / 10
+  def ones_column(number = @question)
+    ones_column = number / 10
   end
 
-  def tens_column
-    tens_column = @question - ones_column
+  def tens_column(number = @question)
+    if number > 99
+      number = number / 100
+    end
+    tens_column = number - ones_column
   end
 end
