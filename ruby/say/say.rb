@@ -44,15 +44,37 @@ class Say
     if @question <= 20
       NUMBERS_UP_TO_TWENTY[@question]
     elsif @question < 100
-      if @question / 10 != 0
-        second_value = @question / 10
-        first_value = @question - second_value
-        NUMBERS_UP_TO_ONE_HUNDRED[first_value] + "-" + NUMBERS_UP_TO_TWENTY[second_value]
-      elsif
-        NUMBERS_UP_TO_ONE_HUNDRED[@question]
+      numbers_less_then_100
+    elsif @question < 1000
+      hunders_column = @question / 100
+      if @question % 100 != 0
+        remainder = @question % 100
+        # get recursive with remainder
+      else
+        NUMBERS_UP_TO_TWENTY[hunders_column] + " " + NUMBERS_UP_TO_ONE_HUNDRED[100]
       end
-    else
-      "Blah"
     end
+  end
+  
+  private
+
+  def numbers_less_then_100
+    if digit_in_ones_column
+      NUMBERS_UP_TO_ONE_HUNDRED[tens_column] + "-" + NUMBERS_UP_TO_TWENTY[ones_column]
+    else
+      NUMBERS_UP_TO_ONE_HUNDRED[@question]
+    end
+  end
+
+  def digit_in_ones_column 
+    @question / 10 !=0
+  end
+
+  def ones_column
+    ones_column = @question / 10
+  end
+
+  def tens_column
+    tens_column = @question - ones_column
   end
 end
