@@ -48,13 +48,14 @@ class Say
     elsif @question < 100
       numbers_less_then_100
     elsif @question < 1000
-      hunders_column = @question / 100
+      hundreds_column = @question / 100
       if @question % 100 != 0
         remainder = @question % 100
-        # get recursive with remainder
-        numbers_less_then_100(remainder)
+        tens_place = (remainder / 10) * 10
+        ones_place = remainder - tens_place
+        NUMBERS_UP_TO_TWENTY[hundreds_column] + " hundred " + NUMBERS_UP_TO_ONE_HUNDRED[tens_place] + "-" + NUMBERS_UP_TO_TWENTY[ones_place]
       else
-        NUMBERS_UP_TO_TWENTY[hunders_column] + " " + NUMBERS_UP_TO_ONE_HUNDRED[100]
+        NUMBERS_UP_TO_TWENTY[hundreds_column] + " " + NUMBERS_UP_TO_ONE_HUNDRED[100]
       end
     end
   end
@@ -63,7 +64,7 @@ class Say
 
   def numbers_less_then_100(number = @question)
     if digit_in_ones_column(number)
-      NUMBERS_UP_TO_ONE_HUNDRED[tens_column] + "-" + NUMBERS_UP_TO_TWENTY[ones_column]
+      NUMBERS_UP_TO_ONE_HUNDRED[tens_column(number)] + "-" + NUMBERS_UP_TO_TWENTY[ones_column(number)]
     else
       NUMBERS_UP_TO_ONE_HUNDRED[@question]
     end
