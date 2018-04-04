@@ -2,6 +2,13 @@ class Say
 
   require 'pry'
 
+  NUMBERS_UP_TO_ONE_MILLION = {
+    1000000 => "one million",
+    100000  => "hundred thousand",
+    10000   => "ten thousand",
+    1000    => "one thousand"
+  }
+
   NUMBERS_UP_TO_ONE_HUNDRED = {
     100 => "hundred",
     90  => "ninety",
@@ -50,17 +57,34 @@ class Say
     elsif @question < 1000
       hundreds_column = @question / 100
       if @question % 100 != 0
-        remainder = @question % 100
-        tens_place = (remainder / 10) * 10
-        ones_place = remainder - tens_place
-        NUMBERS_UP_TO_TWENTY[hundreds_column] + " hundred " + NUMBERS_UP_TO_ONE_HUNDRED[tens_place] + "-" + NUMBERS_UP_TO_TWENTY[ones_place]
+        breakdown_100s(@question)
       else
         NUMBERS_UP_TO_TWENTY[hundreds_column] + " " + NUMBERS_UP_TO_ONE_HUNDRED[100]
+      end
+    else
+      if @question % 1000 == 0
+        NUMBERS_UP_TO_ONE_MILLION[@question]
+      else
+        remainder = @question % 1000
+        breakdown_100s(remainder)
       end
     end
   end
   
   private
+
+  def breakdown_100s(num = @question)
+    hundreds_column = @question / 100
+    remainder = @question % 100
+    tens_place = if remainder % 10 == 0
+                   remainder / 10
+                 else
+                   (remainder / 10) * 10
+                 end
+    ones_place = remainder - tens_place
+    binding.pry
+    NUMBERS_UP_TO_TWENTY[hundreds_column] + " hundred " + NUMBERS_UP_TO_ONE_HUNDRED[tens_place] + "-" + NUMBERS_UP_TO_TWENTY[ones_place]
+  end
 
   def numbers_less_then_100(number = @question)
     if digit_in_ones_column(number)
