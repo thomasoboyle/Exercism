@@ -12,7 +12,6 @@ class BowlingTest < Minitest::Test
   end
 
   def test_should_be_able_to_score_a_game_with_all_zeros
-    # skip
     record([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
     assert_equal 0, @game.score
   end
@@ -48,43 +47,36 @@ class BowlingTest < Minitest::Test
   end
 
   def test_points_scored_in_the_two_rolls_after_a_strike_are_counted_twice_as_a_bonus
-    skip
     record([10, 5, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
     assert_equal 26, @game.score
   end
 
   def test_consecutive_strikes_each_get_the_two_roll_bonus
-    skip
     record([10, 10, 10, 5, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
     assert_equal 81, @game.score
   end
 
   def test_a_strike_in_the_last_frame_gets_a_two_roll_bonus_that_is_counted_once
-    skip
     record([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 7, 1])
     assert_equal 18, @game.score
   end
 
   def test_rolling_a_spare_with_the_two_roll_bonus_does_not_get_a_bonus_roll
-    skip
     record([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 7, 3])
     assert_equal 20, @game.score
   end
 
   def test_strikes_with_the_two_roll_bonus_do_not_get_bonus_rolls
-    skip
     record([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 10, 10])
     assert_equal 30, @game.score
   end
 
   def test_a_strike_with_the_one_roll_bonus_after_a_spare_in_the_last_frame_does_not_get_a_bonus
-    skip
     record([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 3, 10])
     assert_equal 20, @game.score
   end
 
   def test_all_strikes_is_a_perfect_game
-    skip
     record([10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10])
     assert_equal 300, @game.score
   end
