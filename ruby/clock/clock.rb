@@ -16,7 +16,7 @@ class Clock
   def build_hour(hour)
     if hour > 12
       hour = 24 - hour
-      build_hour(hour)
+      build_hour(hour.abs)
     elsif hour < 10
       '0' + hour.abs.to_s
     else
@@ -25,10 +25,13 @@ class Clock
   end
 
   def build_minute(minute)
-    if minute < 10
-      '0' + minute.to_s
+    hours_and_minutes = minute.divmod(60)
+    if hours_and_minutes[0] > 0
+      # add hours_and_minutes to hours
+    elsif hours_and_minutes[1] < 10
+      '0' + hours_and_minutes[1].to_s
     else
-      'hi'
+      '00'
     end
   end
 end
