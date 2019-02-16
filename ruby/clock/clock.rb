@@ -2,10 +2,11 @@ require 'pry'
 
 # Clock solution
 class Clock
-  attr_accessor :hour, :minute
+  attr_accessor :hour, :minute, :roll_over_hours
 
   def initialize(hour: 0, minute: 0)
     @minute = hour * 60 + minute # convert everything to minutes
+    @roll_over_hours = 0
   end
 
   def to_s
@@ -14,7 +15,7 @@ class Clock
   end
 
   def combine_hours_and_minutes
-    split_out_hours(minute) + ":" + split_out_minutes(minute)
+    total_hours + ":" + split_out_minutes(minute)
   end
 
   def split_out_hours(minute)
@@ -33,21 +34,27 @@ class Clock
     if hour > 12
       hour = 24 - hour
       build_hour(hour.abs)
-    elsif hour < 10
-      '0' + hour.abs.to_s
     else
-      hour.to_s
+      hour.abs
+    end
+  end
+
+  def total_hours
+    all_hours = split_out_hours(minute) + roll_over_hours
+    if all_hours < 10
+      '0' + all_hours.to_s
+    else
+      all_hours.to_s
     end
   end
 
   def build_minute(minute)
-    hours_and_minutes = minute.divmod(60)
-    if hours_and_minutes[0] > 0
-     # add hours_and_minutes to hours
-    elsif hours_and_minutes[1] < 10
-      '0' + hours_and_minutes[1].to_s
+    if minute > 60
+      roll_over_hours = minutes / 60 # or something
+    elsif minute < 10
+      '0' + minute.to_s
     else
-      '00'
+      minute.to_s
     end
   end
 end
