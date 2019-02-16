@@ -63,8 +63,15 @@ class Clock
   def negative_hour(hour)
     if hour > -24
       hour + 24
-    elsif # calc to see difference then substract it
-      hour + 48
+    elsif hour > -48
+      hour = hour.abs
+      neg_time = hour - 24
+      24 - neg_time
+    else
+      hour = hour.abs
+      neg_time = hour - 24
+      24 - neg_time
+      build_hour(neg_time)
     end
   end
 end
