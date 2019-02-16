@@ -4,13 +4,13 @@ require 'pry'
 class Clock
   attr_accessor :hour, :minute
 
-  def initialize(hour:, minute: 0)
+  def initialize(hour: 0, minute: 0)
     @hour = hour
     @minute = minute
   end
 
   def to_s
-    build_hour(hour) + ':' + break_down_minutes(minute)
+    build_hour(hour) + ':' + build_minute(minute)
   end
 
   def break_down_minutes(minute)
