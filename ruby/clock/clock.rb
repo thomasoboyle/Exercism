@@ -31,7 +31,9 @@ class Clock
   end
 
   def build_hour(hour)
-    if hour > 12
+    if hour < 0
+      negative_hour(hour)
+    elsif hour > 12
       hour = 24 - hour
       build_hour(hour.abs)
     else
@@ -55,6 +57,14 @@ class Clock
       '0' + minute.to_s
     else
       minute.to_s
+    end
+  end
+
+  def negative_hour(hour)
+    if hour > -24
+      hour + 24
+    elsif # calc to see difference then substract it
+      hour + 48
     end
   end
 end
