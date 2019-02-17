@@ -17,16 +17,19 @@ class Clock
     total_hours + ":" + split_out_minutes(minute)
   end
 
+  def total_hours
+    all_hours = split_out_hours(minute) + roll_over_hours
+    if all_hours < 10
+      '0' + all_hours.to_s
+    else
+      all_hours.to_s
+    end
+  end
+
   def split_out_hours(minute)
     hours_and_minutes = minute.divmod(60)
     total_hours = hours_and_minutes[0]
     build_hour(total_hours)
-  end
-
-  def split_out_minutes(minute)
-    hours_and_minutes = minute.divmod(60)
-    total_minutes = hours_and_minutes[1]
-    build_minute(total_minutes)
   end
 
   def build_hour(hour)
@@ -37,25 +40,6 @@ class Clock
       build_hour(hour.abs)
     else
       hour.abs
-    end
-  end
-
-  def total_hours
-    all_hours = split_out_hours(minute) + roll_over_hours
-    if all_hours < 10
-      '0' + all_hours.to_s
-    else
-      all_hours.to_s
-    end
-  end
-
-  def build_minute(minute)
-    if minute > 60
-      roll_over_hours = minutes / 60
-    elsif minute < 10
-      '0' + minute.to_s
-    else
-      minute.to_s
     end
   end
 
@@ -71,6 +55,23 @@ class Clock
       neg_time = hour - 24
       24 - neg_time
       build_hour(neg_time)
+    end
+  end
+
+  def split_out_minutes(minute)
+    hours_and_minutes = minute.divmod(60)
+    total_minutes = hours_and_minutes[1]
+    roll_over_to_hours = hours_and_minutes[0]
+    build_minute(total_minutes)
+  end
+
+  def build_minute(minute)
+    if minute > 60
+      roll_over_hours = minutes / 60
+    elsif minute < 10
+      '0' + minute.to_s
+    else
+      minute.to_s
     end
   end
 end
