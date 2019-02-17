@@ -2,11 +2,11 @@ require 'pry'
 
 # Clock solution
 class Clock
-  attr_accessor :hour, :minutes
+  attr_accessor :hours, :minutes
 
   def initialize(hour: 0, minute: 0)
     @minutes = hour * 60 + minute
-    @hour = minutes / 60
+    @hours = minutes / 60
   end
 
   def to_s
@@ -14,7 +14,7 @@ class Clock
   end
 
   def divided_hours
-    hour % 24
+    hours % 24
   end
 
   def divided_minutes
@@ -32,6 +32,6 @@ class Clock
   end
 
   def ==(clock)
-    self.hour == clock.hour && self.minutes == clock.minutes
+    self.to_s == clock.to_s
   end
 end
