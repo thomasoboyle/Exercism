@@ -24,10 +24,15 @@ class Triangle
   end
 
   def isosceles
+    return false if invalid_lengths?
     return true if side_lengths.uniq.size <= 2
   end
 
   def invalid_lengths?
-    side_lengths.include?(0)
+    return true if side_lengths.include?(0)
+    lengths = side_lengths.uniq.sort
+    if lengths.size >= 2
+      return true if lengths[0] * 2 < lengths[1]
+    end
   end
 end
