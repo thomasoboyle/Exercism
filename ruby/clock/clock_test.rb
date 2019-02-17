@@ -84,7 +84,6 @@ class ClockTest < Minitest::Test
   end
 
   def test_add_minutes
-    skip
     clock1 = Clock.new(hour: 10, minute: 0)
     assert_equal '10:03', (clock1 + Clock.new(minute: 3)).to_s
   end
