@@ -2,23 +2,19 @@ require 'pry'
 
 # Clock solution
 class Clock
-  attr_accessor :hour, :minute, :roll_over_hours
+  attr_accessor :hour, :minute
 
   def initialize(hour: 0, minute: 0)
     @minute = hour * 60 + minute
-    @roll_over_hours = 0
+    @hour = 60 % @minute
   end
 
   def to_s
-    combine_hours_and_minutes
-  end
-
-  def combine_hours_and_minutes
     total_hours + ":" + split_out_minutes(minute)
   end
 
   def total_hours
-    all_hours = split_out_hours(minute) + roll_over_hours
+    all_hours = split_out_hours(minute)
     if all_hours < 10
       '0' + all_hours.to_s
     else
