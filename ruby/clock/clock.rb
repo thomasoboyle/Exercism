@@ -20,4 +20,18 @@ class Clock
   def divided_minutes
     minutes % 60
   end
+
+  def +(additional_mins)
+    all_minutes = minutes + additional_mins.minutes
+    Clock.new(minute: all_minutes)
+  end
+
+  def -(neg_mins)
+    all_minutes = minutes - neg_mins.minutes
+    Clock.new(minute: all_minutes)
+  end
+
+  def ==(clock)
+    self.hour == clock.hour && self.minutes == clock.minutes
+  end
 end
