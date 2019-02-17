@@ -1,13 +1,12 @@
-require 'pry'
-
 class Triangle
-  attr_reader :first_side, :second_side, :third_side, :sorted_lengths
+  attr_reader :first_side, :second_side, :third_side, :sorted_lengths, :multiplied_lengths
 
   def initialize(side_lengths)
     @sorted_lengths = side_lengths.sort
-    @first_side = sorted_lengths[0]
-    @second_side = sorted_lengths[1]
-    @third_side = sorted_lengths[2]
+    @multiplied_lengths = sorted_lengths.map {|n| n * 10 }
+    @first_side = multiplied_lengths[0]
+    @second_side = multiplied_lengths[1]
+    @third_side = multiplied_lengths[2]
   end
 
   def equilateral?
@@ -43,5 +42,4 @@ class Triangle
   def scalene_ratio
     first_side % 4 == 0 && second_side % 5 == 0 && third_side % 6 == 0
   end
-
 end
