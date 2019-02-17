@@ -4,31 +4,26 @@ require_relative 'triangle'
 # Common test data version: 1.2.0 55f89ca
 class TriangleTest < Minitest::Test
   def test_triangle_is_equilateral_if_all_sides_are_equal
-    # skip
     triangle = Triangle.new([2, 2, 2])
     assert triangle.equilateral?, "Expected 'true', triangle [2, 2, 2] is equilateral."
   end
 
   def test_triangle_is_not_equilateral_if_any_side_is_unequal
-    skip
     triangle = Triangle.new([2, 3, 2])
     refute triangle.equilateral?, "Expected 'false', triangle [2, 3, 2] is not equilateral."
   end
 
   def test_triangle_is_not_equilateral_if_no_sides_are_equal
-    skip
     triangle = Triangle.new([5, 4, 6])
     refute triangle.equilateral?, "Expected 'false', triangle [5, 4, 6] is not equilateral."
   end
 
   def test_all_zero_sides_are_illegal_so_the_triangle_is_not_equilateral
-    skip
     triangle = Triangle.new([0, 0, 0])
     refute triangle.equilateral?, "Expected 'false', triangle [0, 0, 0] is not equilateral."
   end
 
   def test_equilateral_triangle_sides_may_be_floats
-    skip
     triangle = Triangle.new([0.5, 0.5, 0.5])
     assert triangle.equilateral?, "Expected 'true', triangle [0.5, 0.5, 0.5] is equilateral."
   end

@@ -10,6 +10,11 @@ class Triangle
   end
 
   def equilateral?
-    return true if first_side == second_side && first_side && third_side
+    return true if equialateral
+  end
+
+  def equialateral
+    return false if first_side == 0
+    first_side == second_side && first_side == third_side
   end
 end
