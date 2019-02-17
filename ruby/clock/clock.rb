@@ -5,12 +5,11 @@ class Clock
   attr_accessor :hour, :minute, :roll_over_hours
 
   def initialize(hour: 0, minute: 0)
-    @minute = hour * 60 + minute # convert everything to minutes
+    @minute = hour * 60 + minute
     @roll_over_hours = 0
   end
 
   def to_s
-    # this is our formatter. Needs a minute and hour part
     combine_hours_and_minutes
   end
 
@@ -52,7 +51,7 @@ class Clock
 
   def build_minute(minute)
     if minute > 60
-      roll_over_hours = minutes / 60 # or something
+      roll_over_hours = minutes / 60
     elsif minute < 10
       '0' + minute.to_s
     else
