@@ -1,5 +1,7 @@
+require 'pry'
+
 class Robot
-  attr_reader :name
+  attr_accessor :name
 
   def initialize
     @name = gen_rand_letters + gen_rand_nums
@@ -14,6 +16,10 @@ class Robot
   end
 
   def self.forget
+  end
+
+  def reset
+    self.name = gen_rand_letters + gen_rand_nums
   end
 
   ALPHABET = {
