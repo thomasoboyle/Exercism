@@ -1,5 +1,3 @@
-require 'pry'
-
 class Scrabble
   attr_reader :word
   def initialize(word)
@@ -26,8 +24,6 @@ class Scrabble
   def word_invalid
     word.nil? || word == '' || word == " \t\n"
   end
-
-  INVALID_ENTRIES = ["", " \t\n", nil]
 
   CHAR_POINTS = {
     'a' => 1,
@@ -57,4 +53,5 @@ class Scrabble
     'y' => 4,
     'z' => 10
   }
+
 end
