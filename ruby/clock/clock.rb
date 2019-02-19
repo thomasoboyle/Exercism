@@ -1,12 +1,9 @@
-require 'pry'
-
 # Clock solution
 class Clock
   attr_accessor :hours, :minutes
 
   def initialize(hour: 0, minute: 0)
     @minutes = hour * 60 + minute
-    @hours = minutes / 60
   end
 
   def to_s
@@ -14,6 +11,7 @@ class Clock
   end
 
   def divided_hours
+    hours = minutes / 60
     hours % 24
   end
 
@@ -34,4 +32,7 @@ class Clock
   def ==(clock)
     self.to_s == clock.to_s
   end
+
+  alias eql? ==
+
 end
