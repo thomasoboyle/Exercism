@@ -1,14 +1,21 @@
+require 'pry'
 
- class Fixnum
-  def number(input)
-    @input = input
-  end
+class Integer
 
   def to_roman
-    if @input == 1
-      print "I"
-    elsif @input == 2
-      print "II"
-    end
+    ROMAN[self]
   end
+
+  ROMAN = {
+    1000 => 'M',
+    500  => 'D',
+    100 => 'C',
+    50 => 'L',
+    10 => 'X',
+    9 => 'XI',
+    5 => 'V',
+    4 => 'IV',
+    1 => 'I'
+  }
+
 end
