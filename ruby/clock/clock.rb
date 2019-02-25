@@ -28,4 +28,7 @@ class Clock
   def hash
     hour.hash ^ minute.hash
   end
+
+  alias eql? ==
+
 end
