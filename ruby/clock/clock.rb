@@ -5,33 +5,31 @@ class Clock
   attr_accessor :hours, :minutes
 
   def initialize(hour: 0, minute: 0)
-    @minutes = hour * 60 + minute
-    @hours = minutes / 60
+    roll_over_hours, @minutes = minute.divmod(60)
+    @hours = (hour + roll_over_hours) % 24
   end
 
   def to_s
-    format('%02d:%02d', divided_hours, divided_minutes)
-  end
-
-  def divided_hours
-    hours % 24
-  end
-
-  def divided_minutes
-    minutes % 60
+    format('%02d:%02d', hours, minutes)
   end
 
   def +(additional_mins)
     all_minutes = minutes + additional_mins.minutes
-    Clock.new(minute: all_minutes)
+    Clock.new(hour: hours, minute: all_minutes)
   end
 
   def -(neg_mins)
     all_minutes = minutes - neg_mins.minutes
-    Clock.new(minute: all_minutes)
+    Clock.new(hour: hours, minute: all_minutes)
   end
 
   def ==(clock)
-    self.to_s == clock.to_s
+    self.class === clock &&
+      hours == clock.hours &&
+      minutes == clock.minutes
+  end
+
+  def hash
+    hours.hash ^ minutes.hash
   end
 end
