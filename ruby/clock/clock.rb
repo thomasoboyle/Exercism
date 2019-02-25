@@ -1,35 +1,31 @@
-require 'pry'
-
 # Clock solution
 class Clock
-  attr_accessor :hours, :minutes
+  attr_accessor :hour, :minute
 
   def initialize(hour: 0, minute: 0)
-    roll_over_hours, @minutes = minute.divmod(60)
-    @hours = (hour + roll_over_hours) % 24
+    roll_over_hour, @minute = minute.divmod(60)
+    @hour = (hour + roll_over_hour) % 24
   end
 
   def to_s
-    format('%02d:%02d', hours, minutes)
+    format('%02d:%02d', hour, minute)
   end
 
-  def +(additional_mins)
-    all_minutes = minutes + additional_mins.minutes
-    Clock.new(hour: hours, minute: all_minutes)
+  def +(other)
+    Clock.new(hour: hour + other.hour, minute: minute + other.minute)
   end
 
-  def -(neg_mins)
-    all_minutes = minutes - neg_mins.minutes
-    Clock.new(hour: hours, minute: all_minutes)
+  def -(other)
+    Clock.new(hour: hour - other.hour, minute: minute - other.minute)
   end
 
-  def ==(clock)
-    self.class === clock &&
-      hours == clock.hours &&
-      minutes == clock.minutes
+  def ==(other)
+    self.class === other &&
+      hour == other.hour &&
+      minute == other.minute
   end
 
   def hash
-    hours.hash ^ minutes.hash
+    hour.hash ^ minute.hash
   end
 end
