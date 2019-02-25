@@ -1,36 +1,32 @@
 # Clock solution
 class Clock
-  attr_accessor :hours, :minutes
+  attr_accessor :hour, :minute
 
   def initialize(hour: 0, minute: 0)
-    @minutes = hour * 60 + minute
+    roll_over_hour, @minute = minute.divmod(60)
+    @hour = (hour + roll_over_hour) % 24
   end
 
   def to_s
-    format('%02d:%02d', divided_hours, divided_minutes)
+    format('%02d:%02d', hour, minute)
   end
 
-  def divided_hours
-    hours = minutes / 60
-    hours % 24
+  def +(other)
+    Clock.new(hour: hour + other.hour, minute: minute + other.minute)
   end
 
-  def divided_minutes
-    minutes % 60
+  def -(other)
+    Clock.new(hour: hour - other.hour, minute: minute - other.minute)
   end
 
-  def +(additional_mins)
-    all_minutes = minutes + additional_mins.minutes
-    Clock.new(minute: all_minutes)
+  def ==(other)
+    self.class === other &&
+      hour == other.hour &&
+      minute == other.minute
   end
 
-  def -(neg_mins)
-    all_minutes = minutes - neg_mins.minutes
-    Clock.new(minute: all_minutes)
-  end
-
-  def ==(clock)
-    self.to_s == clock.to_s
+  def hash
+    hour.hash ^ minute.hash
   end
 
   alias eql? ==
