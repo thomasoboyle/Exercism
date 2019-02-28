@@ -1,15 +1,18 @@
 # Clock solution
 require 'pry'
 class Clock
-  attr_accessor :minutes, :hours
+  attr_accessor :minutes
 
   def initialize(hour: 0, minute: 0)
-    @minutes = hour * 60 + minute
-    @hours = (@minutes / 60) % 24
+    @minutes = (hour * 60 + minute) % 1440
   end
 
   def to_s
-    format('%02d:%02d', hours, divided_minutes)
+    format('%02d:%02d', formatted_hours, divided_minutes)
+  end
+
+  def formatted_hours
+    (minutes / 60) % 24
   end
 
   def divided_minutes
@@ -17,16 +20,16 @@ class Clock
   end
 
   def +(other)
-    Clock.new(hour: hours, minute: divided_minutes + other.minutes)
+    Clock.new(minute: minutes + other.minutes)
   end
 
   def -(other)
-    Clock.new(hour: hours, minute: divided_minutes - other.minutes)
+    Clock.new(minute: minutes - other.minutes)
   end
 
   def ==(other)
     self.class === other &&
-      self.divided_minutes == other.divided_minutes
+      self.minutes == other.minutes
   end
 
   def hash
