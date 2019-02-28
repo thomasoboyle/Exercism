@@ -1,5 +1,4 @@
 # Clock solution
-require 'pry'
 class Clock
   attr_accessor :minutes
 
