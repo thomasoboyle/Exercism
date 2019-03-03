@@ -1,11 +1,10 @@
 class Acronym
   def self.abbreviate(string)
-    string = string.gsub("-", " ")
+    string = string.scan(/\b\w/)
     acronym = ""
-    word_array = string.split(" ")
 
-    word_array.each do |word|
-      acronym << word[0]
+    string.each do |letter|
+      acronym << letter[0]
     end
     acronym.upcase
   end
