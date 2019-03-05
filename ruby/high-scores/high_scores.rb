@@ -1,5 +1,3 @@
-require 'pry'
-
 class HighScores
   attr_reader :scores
 
@@ -8,7 +6,7 @@ class HighScores
   end
 
   def latest
-   scores[-1] 
+    scores.last
   end
 
   def personal_best
@@ -16,20 +14,22 @@ class HighScores
   end
 
   def personal_top
-    scores.sort!
-    scores.reverse!
-    scores[0..2]
+    scores.max(3)
   end
 
   def report
-    if self.latest == self.personal_best 
-      "Your latest score was #{self.latest}. That's your personal best!"
+    if latest == personal_best
+      "#{latest_score} That's your personal best!"
     else
-      "Your latest score was #{self.latest}. That's #{from_best} short of your personal best!"
+      "#{latest_score} That's #{from_best} short of your personal best!"
     end
   end
 
+  def latest_score
+    "Your latest score was #{latest}."
+  end
+
   def from_best
-    self.personal_best - self.latest
+    personal_best - latest
   end
 end
