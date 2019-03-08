@@ -1,5 +1,3 @@
-require 'pry'
-
 class Acronym
   def self.abbreviate(string)
     string = string.scan(/\b\w/)
