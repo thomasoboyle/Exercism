@@ -1,16 +1,21 @@
-require 'pry'
-
 class Series
-  attr_accessor :series
-
   def initialize(series)
     @series = series
   end
 
   def slices(slice_length)
-    number_slices = series.length - slice_length + 1
     raise ArgumentError if slice_length > series.length
+    array = []
 
-    number_slices.times.map { |i| series[i, slice_length] }
+    series.split('').each_cons(slice_length) do |a|
+      array << a.join
+      array
+    end
+    array
   end
+
+  private
+
+  attr_accessor :series
+
 end
