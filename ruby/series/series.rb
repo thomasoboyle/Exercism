@@ -6,14 +6,12 @@ class Series
   def slices(slice_length)
     raise ArgumentError if slice_length > series.length
     array = []
-    result = []
 
     series.split('').each_cons(slice_length) do |a|
       array << a.join
-      array.flatten
-      result << array
+      array
     end
-    result.first
+    array
   end
 
   private
