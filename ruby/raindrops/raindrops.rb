@@ -1,6 +1,4 @@
 class Raindrops
-    VERSION = 1
-  
   def self.convert(number)
     sounds = ""
     
@@ -11,5 +9,4 @@ class Raindrops
     sounds = number.to_s if sounds.empty?
     sounds
   end
-  
 end
