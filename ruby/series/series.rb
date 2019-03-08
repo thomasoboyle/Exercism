@@ -1,5 +1,3 @@
-require 'pry'
-
 class Series
   def initialize(series)
     @series = series
@@ -7,17 +5,15 @@ class Series
 
   def slices(slice_length)
     raise ArgumentError if slice_length > series.length
-    number_slices = series.length - slice_length + 1
+    array = []
+    result = []
 
-    # number_slices.times.map { |i| series[i, slice_length] }
-    
-    string = []
     series.split('').each_cons(slice_length) do |a|
-      string << a
-      string.join
-      binding.pry
+      array << a.join
+      array.flatten
+      result << array
     end
-    string
+    result.first
   end
 
   private
