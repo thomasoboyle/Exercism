@@ -1,6 +1,5 @@
 class Acronym
   def self.abbreviate(string)
-    string = string.scan(/\b\w/)
-    string.join.upcase
+    first_letters = string.upcase.scan(/\b\w/).join
   end
 end
