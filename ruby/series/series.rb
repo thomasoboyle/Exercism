@@ -5,13 +5,9 @@ class Series
 
   def slices(slice_length)
     raise ArgumentError if slice_length > series.length
-    array = []
+    number_slices = series.length - slice_length + 1
 
-    series.split('').each_cons(slice_length) do |a|
-      array << a.join
-      array
-    end
-    array
+    number_slices.times.map {|i| series[i, slice_length] }
   end
 
   private
