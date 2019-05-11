@@ -8,24 +8,20 @@ class Scrabble
     return 0 if word_invalid
     points = 0
     word.each_char do |char|
-      points += CHAR_POINTS[char]
+      points += TILE_POINTS[char]
     end
     points
   end
 
   def self.score(word)
-    points = 0
-    word.each_char do |char|
-      points += CHAR_POINTS[char]
-    end
-    points
+    new(word).score
   end
 
   def word_invalid
     word.nil? || word == '' || word == " \t\n"
   end
 
-  CHAR_POINTS = {
+  TILE_POINTS = {
     'a' => 1,
     'b' => 3,
     'c' => 3,
