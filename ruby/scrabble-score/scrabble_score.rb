@@ -1,17 +1,17 @@
 class Scrabble
   attr_reader :word
+
   def initialize(word)
     @word = word&.downcase
   end
 
   def score
     return 0 if word_invalid
-    points = 0
-    word.each_char do |char|
-      points += TILE_POINTS[char]
-    end
-    points
+
+    word.chars.collect{|letter| TILE_POINTS[letter]}.sum
   end
+
+  private
 
   def self.score(word)
     new(word).score
