@@ -1,11 +1,8 @@
-require 'pry'
-
 class Integer
 
   def to_roman
     num = self
     symbol = ""
-    ROMAN[self]
     ROMAN.each do |int, letter|
       while num >= int
         num -= int
@@ -14,6 +11,8 @@ class Integer
     end
     symbol
   end
+
+  private
 
   ROMAN = {
     1000 => 'M',
