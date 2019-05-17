@@ -6,7 +6,7 @@ class Series
   def slices(slice_length)
     raise ArgumentError if slice_length > series.length
 
-    series.chars.each_cons(slice_length).map { |i| i.join }
+    series.chars.each_cons(slice_length).map(&:join)
   end
 
   private

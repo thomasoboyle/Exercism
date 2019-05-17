@@ -6,9 +6,9 @@ class Scrabble
   end
 
   def score
-    return 0 if word_invalid
+    return 0 if invalid?
 
-    word.chars.collect{|letter| TILE_POINTS[letter]}.sum
+    word.chars.sum { |letter| TILE_POINTS[letter] }
   end
 
   private
@@ -17,7 +17,7 @@ class Scrabble
     new(word).score
   end
 
-  def word_invalid
+  def invalid?
     word.nil? || word == '' || word == " \t\n"
   end
 
