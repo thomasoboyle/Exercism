@@ -10,33 +10,33 @@ class Triangle
   end
 
   def equilateral?
-    return true if equialateral
+    true if equialateral
   end
 
   def equialateral
     return false if invalid_lengths?
-    return true if sorted_lengths.uniq.size == 1
+    true if sorted_lengths.uniq.size == 1
   end
 
   def isosceles?
-    return true if isosceles
+    true if isosceles
   end
 
   def isosceles
     return false if invalid_lengths?
-    return true if sorted_lengths.uniq.size <= 2
+    true if sorted_lengths.uniq.size <= 2
   end
 
   def invalid_lengths?
     return true if sorted_lengths.include?(0)
     lengths = sorted_lengths.uniq
     if lengths.size >= 2
-      return true if lengths[0] * 2 < lengths[1]
+      true if lengths[0] * 2 < lengths[1]
     end
   end
 
   def scalene?
-    return true if scalene_ratio
+    true if scalene_ratio
   end
 
   def scalene_ratio
