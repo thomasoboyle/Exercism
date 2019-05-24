@@ -10,19 +10,11 @@ class Triangle
   end
 
   def equilateral?
-    true if equialateral
-  end
-
-  def equialateral
     return false if invalid_lengths?
     true if sorted_lengths.uniq.size == 1
   end
 
   def isosceles?
-    true if isosceles
-  end
-
-  def isosceles
     return false if invalid_lengths?
     true if sorted_lengths.uniq.size <= 2
   end
