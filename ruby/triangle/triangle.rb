@@ -2,7 +2,7 @@ class Triangle
   attr_reader :sides
 
   def initialize(side_lengths)
-    @sides = side_lengths.sort
+    @sides = side_lengths.sort.map { |n| n * 10 }
   end
 
   def equilateral?
