@@ -1,8 +1,8 @@
 class ResistorColorDuo
 
   def self.value(colors)
-    number = "#{ColorValues[colors[0]]}" + "#{ColorValues[colors[1]]}"[0]
-    number.to_i
+    number = "#{ColorValues[colors[0]]}" + "#{ColorValues[colors[1]]}"
+    number[0..1].to_i
   end
 
   ColorValues = {
