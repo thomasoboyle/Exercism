@@ -4,10 +4,12 @@ class ResistorColorDuo
     "#{ColorArray.index(colors[0])}#{ColorArray.index(colors[1])}".to_i
   end
 
+  private
+
   ColorArray = [
     "black",
     "brown",
-    "no_color",
+    "red",
     "orange",
     "yellow",
     "green",
@@ -16,4 +18,5 @@ class ResistorColorDuo
     "grey",
     "white"
    ]
+
 end
