@@ -1,22 +1,24 @@
 class ResistorColorDuo
 
   def self.value(colors)
-    "#{ColorArray.index(colors[0])}#{ColorArray.index(colors[1])}".to_i
+    numbers = colors.map(&BANDS)
+    numbers = "#{numbers[0]}" + "#{numbers[1]}"
+    numbers.to_i
   end
 
   private
 
-  ColorArray = [
-    "black",
-    "brown",
-    "red",
-    "orange",
-    "yellow",
-    "green",
-    "blue" ,
-    "violet",
-    "grey",
-    "white"
-   ]
+  BANDS = {
+    "black" => 0,
+    "brown" => 1,
+    "red" => 2,
+    "orange" => 3,
+    "yellow" => 4,
+    "green" => 5,
+    "blue"  => 6,
+    "violet" => 7,
+    "grey" => 8,
+    "white" => 9
+   }
 
 end
