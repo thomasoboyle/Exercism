@@ -1,9 +1,7 @@
 class ResistorColorDuo
 
   def self.value(colors)
-    numbers = colors.map(&BANDS)
-    numbers = "#{numbers[0]}" + "#{numbers[1]}"
-    numbers.to_i
+    colors[0..1].map(&BANDS).join.to_i
   end
 
   private
