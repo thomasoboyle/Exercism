@@ -4,8 +4,8 @@ class Luhn
   def self.valid?(credit_card_number)
     return false if credit_card_number.length < 2
     
-    numbers = credit_card_number.reverse.split("")
-
+    just_numbers = credit_card_number.tr(" ", '')
+    numbers = just_numbers.reverse.split("")
     sum = 0
 
     numbers.each_with_index do |number, idx|
@@ -13,12 +13,18 @@ class Luhn
 
       if idx.even?
         sum += number
-      elsif (number * 2) > 10 
+      elsif (number * 2) > 9
         sum += ( number * 2 - 9)
       else
         sum += number * 2
       end
+      sum
     end
-    sum % 10
+
+    if sum % 10 == 0
+      return true
+    else
+      return false
+    end
   end
 end
