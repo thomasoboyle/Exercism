@@ -1,12 +1,11 @@
-require 'pry'
-
 class Luhn
   def self.valid?(credit_card_number)
-    return false if credit_card_number.length < 2
-    
     just_numbers = credit_card_number.tr(" ", '')
     numbers = just_numbers.reverse.split("")
     sum = 0
+
+    return false if numbers.length < 2
+    return false if just_numbers.gsub(/[^\d]/, '').length < just_numbers.length
 
     numbers.each_with_index do |number, idx|
       number = number.to_i
